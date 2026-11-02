@@ -2,195 +2,215 @@
 
 ## 1. Project Overview
 
-The Train Seat Allocation and Route Query Prototype is a C++ console-based application developed as part of the Data Structures and Algorithms-II course.
+The Train Seat Allocation and Route Query Prototype is a C++-based console application developed as part of the Data Structures and Algorithms-II course.
 
-The project demonstrates how different Data Structures and Algorithms can be applied to train record management, railway route searching and seat allocation.
+The project demonstrates the practical application of different data structures and algorithms in railway management, including train record management, shortest route calculation, seat capacity optimization and feasible seat allocation.
 
-It combines Binary Search Trees, Graph Algorithms, Dynamic Programming, Backtracking and Branch and Bound concepts into a menu-driven application.
-
-The project uses simulated sample data and is designed as an educational prototype. It is not connected to any live railway reservation system.
+The application is organized into separate modules to maintain a structured and understandable project architecture.
 
 ## 2. Project Objectives
 
-- To organize train records using a Binary Search Tree.
+- To manage train records using a Binary Search Tree.
 - To represent railway stations and routes using Graph data structures.
-- To calculate shortest distances between stations using Dijkstra's Algorithm.
-- To optimize limited seat capacity using Dynamic Programming.
+- To find shortest distances between stations using Dijkstra's Algorithm.
+- To optimize seat capacity using Dynamic Programming.
 - To check feasible seat allocation using Backtracking.
-- To understand the practical application of DSA concepts in railway management.
+- To demonstrate the practical application of DSA concepts using C++.
 
 ## 3. Technologies Used
 
 - Programming Language: C++
-- IDE: Visual Studio Code
+- Standard: C++17
 - Compiler: GCC / G++
-- Application Type: Console-Based Application
+- IDE: Visual Studio Code
+- Version Control: Git and GitHub
 
-## 4. Data Structures and Algorithms Used
+## 4. Data Structures and Algorithms Implemented
 
 ### Unit 1: Trees
 
 **Binary Search Tree (BST)**
 
-A Binary Search Tree is used to store train records in sorted order based on train ID.
+A Binary Search Tree is used to organize train records according to their Train ID.
 
-Main operations:
+Operations:
 - Insertion of train records.
+- Searching train records.
 - Inorder traversal.
 - Displaying train records in sorted order.
-- Searching using BST ordering.
+- Handling duplicate Train IDs.
 
 Time Complexity:
-- Average Search: O(log n)
 - Average Insertion: O(log n)
+- Average Search: O(log n)
 - Worst Case: O(n)
 
 ### Unit 2: Graph Algorithms
 
-A weighted graph represents railway stations and routes. Stations are represented as vertices, and routes are represented as weighted edges containing distance in kilometres.
+**Weighted Graph using Adjacency List**
 
-Graph Representation:
-- Adjacency List
+Railway stations are represented as vertices, while railway routes are represented as weighted edges containing distances.
 
 Algorithm:
 - Dijkstra's Shortest Path Algorithm.
+- Min-Heap Priority Queue.
 
 Applications:
-- Finding the shortest distance between stations.
+- Finding shortest distances between stations.
+- Representing railway connectivity.
 - Identifying unreachable stations.
-- Managing railway route connections.
 
 Time Complexity:
 - Dijkstra's Algorithm: O((V + E) log V)
-- Adjacency List Space: O(V + E)
+- Space Complexity: O(V + E)
 
 ### Unit 3: Dynamic Programming
 
 **0/1 Knapsack Problem**
 
-Dynamic Programming is used to optimize seat capacity based on booking group requirements and priority values.
-
-The algorithm selects the best combination of booking groups without exceeding the available seat capacity.
+Dynamic Programming is used to solve the 0/1 Knapsack problem by selecting items with maximum total value without exceeding the given capacity.
 
 Applications:
 - Seat capacity optimization.
-- Priority-based selection of booking groups.
+- Resource allocation.
+- Maximizing total selection value.
 
 Time Complexity:
 - O(n × W)
 
-### Unit 4: Backtracking and Branch & Bound
+### Unit 4: Backtracking
 
-**Backtracking**
+**Seat Allocation using Backtracking**
 
-Backtracking checks whether a required number of seats can be formed using available seat blocks.
+Backtracking is used to check whether a required number of seats can be allocated by selecting suitable available seat blocks.
 
-It follows an include-or-exclude approach to explore possible combinations.
+The algorithm follows an include-or-exclude approach to explore possible combinations.
 
-**Branch and Bound**
+Applications:
+- Checking feasible seat combinations.
+- Selecting available seat blocks.
+- Exploring possible allocation solutions.
 
-Branch and Bound is studied as a related optimization technique but is not implemented in the current version.
-
-Application:
-- Checking feasible seat allocation.
-- Exploring valid seat combinations.
-
-Backtracking Worst-Case Time Complexity:
+Worst-Case Time Complexity:
 - O(2^n)
 
-### Unit 5: Advanced Data Structures
+## 5. Main Project Features
 
-Advanced Data Structures studied conceptually include:
-
-- AVL Trees
-- Red-Black Trees
-- B-Trees
-- B+ Trees
-
-These structures are discussed as possible approaches for managing larger datasets. They are not implemented as separate modules in the current version.
-
-## 5. Main Features
-
-- Train record management using BST.
-- Sorted display of train records.
-- Railway station and route representation.
-- Shortest route calculation using Dijkstra's Algorithm.
-- Seat capacity optimization using 0/1 Knapsack.
-- Seat availability checking using Backtracking.
+- Train record insertion and searching.
+- Sorted train record display.
+- Railway station connectivity representation.
+- Shortest route distance calculation.
+- Dynamic Programming-based capacity optimization.
+- Backtracking-based seat allocation checking.
 - Menu-driven console interface.
 
 ## 6. Project Structure
 
-The project is maintained in a GitHub repository and organized as follows:
+The project source code is maintained in a modular folder structure.
 
 ```text
 train-seat-allocation-route-query/
 │
-├── main.cpp
+├── src/
+│   │
+│   ├── backtracking/
+│   │   ├── seat_allocation.cpp
+│   │   └── seat_allocation.h
+│   │
+│   ├── dp/
+│   │   ├── knapsack.cpp
+│   │   └── knapsack.h
+│   │
+│   ├── graph/
+│   │   ├── train_graph.cpp
+│   │   └── train_graph.h
+│   │
+│   ├── trees/
+│   │   ├── train_bst.cpp
+│   │   └── train_bst.h
+│   │
+│   └── main.cpp
 │
+├── .gitignore
 └── README.md
 ```
 
-The main.cpp file serves as the entry point of the application. It contains the different algorithm implementations and the menu-driven program logic, organized into sections for each unit.
+### Module Description
 
-## 7. Sample Test Results
+- **trees:** Contains Binary Search Tree implementation for train records.
+- **graph:** Contains weighted graph representation and Dijkstra's Algorithm.
+- **dp:** Contains the 0/1 Knapsack Dynamic Programming implementation.
+- **backtracking:** Contains seat allocation using Backtracking.
+- **main.cpp:** Serves as the main entry point and integrates all four modules.
 
-| Module | Test Case | Expected Result |
-|---|---|---|
-| BST | Insert IDs 101, 105, 102 | Sorted records: 101, 102, 105 |
-| Graph + Dijkstra | Four-station graph | Distances: 0, 12, 30, 38 km |
-| 0/1 Knapsack | Capacity 50 | Maximum value: 220 |
-| Backtracking | Blocks 10, 20, 15, 5; required 25 | Allocation possible: YES |
-| Menu | Invalid option | Invalid Option! Try again. |
+## 7. How to Compile and Run
 
-## 8. How to Compile and Run
+Make sure a C++17-compatible compiler (G++) is installed.
 
-Make sure a C++ compiler (G++) is installed.
-
-### Step 1: Compile
+### Step 1: Clone the Repository
 
 ```bash
-g++ main.cpp -o train_app
+git clone https://github.com/av6938889-bit/train-seat-allocation-route-query.git
 ```
 
-### Step 2: Run on macOS / Linux
+### Step 2: Open the Project Directory
+
+```bash
+cd train-seat-allocation-route-query
+```
+
+### Step 3: Compile the Project
+
+```bash
+g++ -std=c++17 src/main.cpp src/trees/train_bst.cpp src/graph/train_graph.cpp src/dp/knapsack.cpp src/backtracking/seat_allocation.cpp -o train_app
+```
+
+### Step 4: Run the Application
+
+On macOS / Linux:
 
 ```bash
 ./train_app
 ```
 
-### Step 3: Run on Windows
+On Windows:
 
 ```bash
 train_app.exe
 ```
 
+## 8. Application Menu
+
+The application provides the following menu options:
+
+1. Manage Train Records (BST)
+2. Find Shortest Route (Dijkstra)
+3. Optimize Seat Capacity (Knapsack)
+4. Check Seat Allocation (Backtracking)
+5. Exit
+
 ## 9. Project Limitations
 
-- Uses small simulated datasets.
+- Uses simulated railway data.
 - Does not connect to live railway databases.
-- Does not provide online ticket booking or payment.
 - Does not provide real-time train tracking.
-- Uses fixed sample inputs in the current prototype.
+- Does not support online ticket booking or payments.
+- Uses predefined sample inputs for demonstration.
 
-## 10. Future Improvements
+## 10. Future Enhancements
 
-- Add BST search and deletion operations.
-- Implement self-balancing trees for larger datasets.
-- Allow users to enter train, station and seat information.
-- Add BFS, DFS, Bellman-Ford and Floyd-Warshall route options.
-- Implement Branch and Bound for larger optimization problems.
-- Integrate database storage.
-- Develop a graphical user interface.
-- Test the application with larger datasets.
+- Add a graphical user interface.
+- Integrate a database for train records.
+- Support dynamic station and route inputs.
+- Implement additional route-finding algorithms.
+- Improve seat allocation with advanced optimization techniques.
+- Introduce real-time railway information integration.
 
 ## 11. Conclusion
 
-The Train Seat Allocation and Route Query Prototype demonstrates how Data Structures and Algorithms can be applied to railway management problems.
+The Train Seat Allocation and Route Query Prototype demonstrates the practical use of Data Structures and Algorithms in railway management.
 
-It combines BST, Graph Algorithms, Dijkstra's Algorithm, Dynamic Programming and Backtracking in a single C++ console application.
-
-The project provides practical understanding of algorithm selection, time complexity, problem-solving and C++ programming.
+By combining Binary Search Trees, Graph Algorithms, Dynamic Programming and Backtracking, the project provides an understanding of algorithmic problem-solving and their applications in a real-world-inspired railway system.
 
 ## 12. Author Information
 
@@ -198,20 +218,18 @@ The project provides practical understanding of algorithm selection, time comple
 
 **Branch:** BTech CSE-A
 
-**College:** Noida Institute of Engineering and Technology (NIET), Greater Noida
+**Institution:** Noida Institute of Engineering and Technology (NIET), Greater Noida
 
-**Course:** Data Structures and Algorithms - II
+**Course:** Data Structures and Algorithms-II
 
 **Course Code:** CCSE0301
 
-**Faculty:** Mr. Shamshad Ali
-
 ## 13. GitHub Repository
 
-Project Source Code:
+**Project Source Code:**
 
 https://github.com/av6938889-bit/train-seat-allocation-route-query
 
 ---
 
-Developed as an academic PBL project at NIET Greater Noida.
+Developed as an academic Project-Based Learning (PBL) project at NIET Greater Noida.
